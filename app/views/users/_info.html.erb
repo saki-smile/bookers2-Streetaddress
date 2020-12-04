@@ -10,7 +10,6 @@
   </tr>
   <tr>
 	  <th>follows</th>
-	  following_user_path(user)
 	  <th><%= link_to user.follower.count, following_user_path(user) %></th>
   </tr>
   <tr>
@@ -21,9 +20,9 @@
 
 <% unless user == current_user %>
   <% if current_user.following?(user) %>
-    <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+    <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST, class: "btn btn-primary mb-3" %>
   <% else %>
-    <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+    <%= link_to 'フォローする', follow_path(user.id), method: :POST, class: "btn btn-success mb-3" %>
   <% end %>
 <% end %>
 

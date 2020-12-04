@@ -14,10 +14,12 @@
         <td>フォロー数:<%= user.follower.count %></td>
         <td>フォロワー数:<%= user.followed.count %></td>
         <td>
-          <% if current_user.following?(user) %>
-            <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-          <% else %>
-            <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+          <% unless user == current_user %>
+            <% if current_user.following?(user) %>
+              <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+            <% else %>
+              <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+            <% end %>
           <% end %>
         </td>
         <td><%= link_to 'Show', user_path(user), class: "user_#{user.id}" %></td>
