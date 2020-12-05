@@ -1,0 +1,47 @@
+
+
+<div class='container px-sm-0'>
+  <div class='row'>
+    <div class='col-md-12'>
+      <h2>検索結果</h2>
+      <table class="table">
+        <!--ユーザーが検索された場合-->
+        <% if @model == "user" %>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th></th>
+        </thead>
+        <tbody>
+          <% @datas.each do |data| %>
+          <tr>
+            <td><%= attachment_image_tag(data, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
+            <td><%= data.name %></td>
+            <td><%= link_to 'Show', user_path(data) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+        <% end %>
+        <!--ブックが検索された場合-->
+        <% if @model == "book" %>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+        </thead>
+        <tbody>
+          <% @datas.each do |data| %>
+          <tr>
+            <td><%= attachment_image_tag(data.user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
+            <td><%= link_to data.title, book_path(data) %></td>
+            <td><%= data.body %></td>
+          </tr>
+          <% end %>
+        </tbody>
+        <% end %>
+      </table>
+		</div>
+	</div>
+</div>
