@@ -1,16 +1,14 @@
 <div class='container mt-1 mb-2'>
-  <div class='row'>
-    <div class='col-12'>
-			<% if user_signed_in? %>
-			  <div class="mx-auto col-5" >
-			    <%= form_with url:search_path, method: :get, local: true do |f| %>
-			      <%= f.text_field 'search[content]'  %>
-			      <%= f.select 'search[model]', ({ "User" => "user", "Book" => "book" }), class: "form-control" %>
-			      <%= f.select 'search[how]', ({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"  }), class: "form-control" %>
-			      <%= f.submit '検索', class: "btn btn-secondary btn-sm" %>
-			    <% end %>
-			  </div>
-			<% end %>
-		</dev>
+  <div class='row justify-content-center'>
+	<% if user_signed_in? %>
+	  <div class="col-12　">
+	    <%= form_with url:search_path, method: :get, local: true do |f| %>
+	      <%= f.text_field 'search[content]'  %>
+	      <%= f.select 'search[model]', ({ "User" => "user", "Book" => "book" }), class: "form-control" %>
+	      <%= f.select 'search[how]', ({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"  }), class: "form-control" %>
+	      <%= f.submit '検索', class: "btn btn-secondary btn-sm" %>
+	    <% end %>
+	  </div>
+	<% end %>
 	</div>
 </div>
